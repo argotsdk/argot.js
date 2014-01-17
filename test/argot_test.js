@@ -27,8 +27,7 @@ var commonDictionary = './test/common.dictionary';
 
 
 
-
-exports['parse'] = {
+exports['argot'] = {
   setUp: function(done) {
     // setup here
     done();
@@ -36,10 +35,14 @@ exports['parse'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    setTimeout(argot.parse(commonDictionary, null, function(library) {
+    var currentLibrary = {
+      coreSize: 980
+      // 980 is the size of common core
+    };
+    setTimeout(argot.loadDictionary(commonDictionary, currentLibrary, function(library) {
       console.log('library is :', library.toString());
       library.then(function(x) {
-        test.deepEqual(x, {}, 'should be awesome.');
+        test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
         test.done();
       });
     }), 5000);
