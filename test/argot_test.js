@@ -22,9 +22,9 @@ var argot = require('../lib/argot.js');
     test.ifError(value)
 */
 
-var metaDictionary = '/Users/dan/repos/3rd/argot-java/argot/meta.dictionary';
-var commonDictionary = '/Users/dan/repos/3rd/argot-java/argot/common.dictionary';
-var lightDictionary = '/Users/dan/repos/3rd/argot-start/src/main/resources/light.dictionary';
+
+var commonDictionary = './test/common.dictionary';
+
 
 
 
