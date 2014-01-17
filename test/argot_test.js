@@ -22,7 +22,13 @@ var argot = require('../lib/argot.js');
     test.ifError(value)
 */
 
-exports['awesome'] = {
+var metaDictionary = '/Users/dan/repos/3rd/argot-java/argot/meta.dictionary';
+var commonDictionary = '/Users/dan/repos/3rd/argot-java/argot/common.dictionary';
+var lightDictionary = '/Users/dan/repos/3rd/argot-start/src/main/resources/light.dictionary';
+
+
+
+exports['parse'] = {
   setUp: function(done) {
     // setup here
     done();
@@ -30,7 +36,14 @@ exports['awesome'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    test.equal(argot.awesome(), 'awesome', 'should be awesome.');
-    test.done();
-  },
+    setTimeout(argot.parse(commonDictionary, null, function(library) {
+      console.log('library is :', library.toString());
+      library.then(function(x) {
+        test.deepEqual(x, {}, 'should be awesome.');
+        test.done();
+      });
+    }), 5000);
+
+
+  }
 };
