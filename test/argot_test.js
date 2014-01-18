@@ -24,6 +24,7 @@ var argot = require('../lib/argot.js');
 
 
 var commonDictionary = './test/common.dictionary';
+var metaDictionary = './test/meta.dictionary';
 
 
 
@@ -46,7 +47,28 @@ exports['argot'] = {
         test.done();
       });
     }), 5000);
+  }
+};
 
 
+exports['meta'] = {
+  setUp: function(done) {
+    // setup here
+    done();
+  },
+  'no args': function(test) {
+    test.expect(1);
+    // tests here
+    var currentLibrary = {
+      coreSize: 980
+      // 980 is the size of common core
+    };
+    setTimeout(argot.loadDictionary(metaDictionary, currentLibrary, function(library) {
+      console.log('library is :', library.toString());
+      library.then(function(x) {
+        test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
+        test.done();
+      });
+    }), 5000);
   }
 };
