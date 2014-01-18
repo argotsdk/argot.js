@@ -5,15 +5,12 @@ A language for the Internet of Things.
 A JavaScript port of [Argot SDK](http://www.argot-sdk.org/).
 
 ## Getting Started
-Install the module with: `npm install argot`
 
-```javascript
-var argot = require('argot');
-argot.awesome(); // "awesome"
-```
+Check it out and run `grunt` for the tests
 
 ## Documentation
-_(Coming soon)_
+
+* [Dictionary Format](https://github.com/danmidwood/argot.js/blob/master/doc/dictionary_format.md)
 
 ## Examples
 _(Coming soon)_

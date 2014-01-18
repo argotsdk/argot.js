@@ -31,5 +31,6 @@
   "dependencies": {
     "q": "0.9.7"
   },
-  "keywords": []
+  "keywords": [],
+  "doc": "./doc"
 }
