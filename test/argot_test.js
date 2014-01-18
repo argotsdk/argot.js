@@ -50,7 +50,7 @@ exports['common'] = {
         test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
         test.done();
       });
-    }), 5000);
+    }), 1000);
   }
 };
 
@@ -72,7 +72,7 @@ exports['light'] = {
         test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
         test.done();
       });
-    }), 5000);
+    }), 1000);
   }
 };
 
@@ -94,6 +94,6 @@ exports['meta'] = {
         test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
         test.done();
       });
-    }), 5000);
+    }), 1000);
   }
 };
