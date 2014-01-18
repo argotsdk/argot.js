@@ -26,9 +26,13 @@ var argot = require('../lib/argot.js');
 var commonDictionary = './test/common.dictionary';
 var metaDictionary = './test/meta.dictionary';
 
+// The light dictionary is taken from Argot's quickstart example
+// http://www.argot-sdk.org/start.htm
+var lightDictionary = './test/light.dictionary';
 
 
-exports['argot'] = {
+
+exports['common'] = {
   setUp: function(done) {
     // setup here
     done();
@@ -50,6 +54,27 @@ exports['argot'] = {
   }
 };
 
+exports['light'] = {
+  setUp: function(done) {
+    // setup here
+    done();
+  },
+  'no args': function(test) {
+    test.expect(1);
+    // tests here
+    var currentLibrary = {
+      coreSize: 980
+      // 980 is the size of common core
+    };
+    setTimeout(argot.loadDictionary(lightDictionary, currentLibrary, function(library) {
+      console.log('library is :', library.toString());
+      library.then(function(x) {
+        test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
+        test.done();
+      });
+    }), 5000);
+  }
+};
 
 exports['meta'] = {
   setUp: function(done) {
