@@ -29,7 +29,8 @@
     "tools.repl": ">=0.0.1"
   },
   "dependencies": {
-    "q": "0.9.7"
+    "q": "0.9.7",
+    "winston": "0.7.2"
   },
   "keywords": [],
   "doc": "./doc"
