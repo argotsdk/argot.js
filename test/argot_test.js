@@ -1,7 +1,6 @@
 'use strict';
 
 var logger = require('winston');
-
 logger.cli();
 
 var argot = require('../lib/argot.js');
@@ -36,12 +35,12 @@ var metaDictionary = './test/meta.dictionary';
 var lightDictionary = './test/light.dictionary';
 
 
-function logTypes(library) {
-  logger.info('Final types:');
-  for (var name in library.types) {
-    logger.info('Name: %s, definition %j', name, library.types[name], {});
-  }
-}
+// function logTypes(library) {
+//   logger.info('Final types:');
+//   for (var name in library.types) {
+//     logger.info('Name: %s, definition %j', name, library.types[name], {});
+//   }
+// }
 
 exports['common'] = {
   setUp: function(done) {
@@ -77,7 +76,6 @@ exports['light'] = {
       console.log('library is :', library.toString());
       library.then(function(x) {
         test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
-        logTypes(x);
         test.done();
       });
     }), 1000);
