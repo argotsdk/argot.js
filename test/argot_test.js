@@ -1,6 +1,11 @@
 'use strict';
 
+var logger = require('winston');
+
+logger.cli();
+
 var argot = require('../lib/argot.js');
+var libfns = require('../lib/library.js');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -31,6 +36,12 @@ var metaDictionary = './test/meta.dictionary';
 var lightDictionary = './test/light.dictionary';
 
 
+function logTypes(library) {
+  logger.info('Final types:');
+  for (var name in library.types) {
+    logger.info('Name: %s, definition %j', name, library.types[name], {});
+  }
+}
 
 exports['common'] = {
   setUp: function(done) {
@@ -40,10 +51,8 @@ exports['common'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    var currentLibrary = {
-      coreSize: 980
-      // 980 is the size of common core
-    };
+    var currentLibrary = libfns.makeLibrary(1.3);
+
     setTimeout(argot.loadDictionary(commonDictionary, currentLibrary, function(library) {
       console.log('library is :', library.toString());
       library.then(function(x) {
@@ -62,14 +71,13 @@ exports['light'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    var currentLibrary = {
-      coreSize: 980
-      // 980 is the size of common core
-    };
+    var currentLibrary = libfns.makeLibrary(1.3);
+
     setTimeout(argot.loadDictionary(lightDictionary, currentLibrary, function(library) {
       console.log('library is :', library.toString());
       library.then(function(x) {
         test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
+        logTypes(x);
         test.done();
       });
     }), 1000);
@@ -84,10 +92,7 @@ exports['meta'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    var currentLibrary = {
-      coreSize: 980
-      // 980 is the size of common core
-    };
+    var currentLibrary = libfns.makeLibrary(1.3);
     setTimeout(argot.loadDictionary(metaDictionary, currentLibrary, function(library) {
       console.log('library is :', library.toString());
       library.then(function(x) {
