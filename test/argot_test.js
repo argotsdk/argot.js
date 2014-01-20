@@ -4,7 +4,6 @@ var logger = require('winston');
 logger.cli();
 
 var argot = require('../lib/argot.js');
-var libfns = require('../lib/library.js');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -50,9 +49,7 @@ exports['common'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    var currentLibrary = libfns.makeLibrary(1.3);
-
-    setTimeout(argot.loadDictionary(commonDictionary, currentLibrary, function(library) {
+    setTimeout(argot.loadDictionary(commonDictionary, function(library) {
       console.log('library is :', library.toString());
       library.then(function(x) {
         test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
@@ -70,9 +67,7 @@ exports['light'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    var currentLibrary = libfns.makeLibrary(1.3);
-
-    setTimeout(argot.loadDictionary(lightDictionary, currentLibrary, function(library) {
+    setTimeout(argot.loadDictionary(lightDictionary, function(library) {
       console.log('library is :', library.toString());
       library.then(function(x) {
         test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
@@ -90,8 +85,7 @@ exports['meta'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    var currentLibrary = libfns.makeLibrary(1.3);
-    setTimeout(argot.loadDictionary(metaDictionary, currentLibrary, function(library) {
+    setTimeout(argot.loadDictionary(metaDictionary, function(library) {
       console.log('library is :', library.toString());
       library.then(function(x) {
         test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
