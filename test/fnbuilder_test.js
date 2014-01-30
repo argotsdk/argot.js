@@ -42,13 +42,13 @@ exports['buildReader_for_light_color'] = {
     setTimeout(argot.loadDictionary(lightDictionary, function(library) {
       library.then(function(lib) {
         // tests here
-        var light_structure = [{"description":"red","expression":{"type":"uint8"}},
+        var lightStructure = [{"description":"red","expression":{"type":"uint8"}},
                                {"description":"green","expression":{"type":"uint8"}},
                                {"description":"blue","expression":{"type":"uint8"}}];
-        var reader_fn = libfns.buildReader(lib,{expression:light_structure});
+        var readerFn = libfns.buildReader(lib,{expression:lightStructure});
         var input = [120, 10, 30];
         var fileStream_input = streamifier.createReadStream (new Buffer(input));
-        var read_data = reader_fn(fileStream_input);
+        var read_data = readerFn(fileStream_input);
         test.equals(read_data.red, 120);
         test.equals(read_data.green, 10);
         test.equals(read_data.blue, 30);
