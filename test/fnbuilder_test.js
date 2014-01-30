@@ -59,3 +59,39 @@ exports['buildReader_for_light_color'] = {
 
   }
 };
+
+exports['buildReader_for_light_setcolor_(a_nested_structure)'] = {
+  setUp: function(done) {
+    // setup here
+    done();
+  },
+  'no args': function(test) {
+    test.expect(3);
+    setTimeout(argot.loadDictionary(lightDictionary, function(library) {
+      library.then(function(lib) {
+        // tests here
+
+        {
+          // Remove this block when we have the reader being built already and assigned
+          // to the type definition .reader property
+          var colourTypeDef = libfns.getTypeDefinition(lib,'light.colour');
+          colourTypeDef.reader = colourTypeDef.typeReader;
+        }
+
+        var lightSetColorStructure = [{"description":"colour",
+                                         "expression":{"type":"light.colour"}}];
+        var readerFn = libfns.buildReader(lib,{expression:lightSetColorStructure});
+        var input = [120, 10, 30];
+        var fileStream_input = streamifier.createReadStream (new Buffer(input));
+        var setColourData = readerFn(fileStream_input);
+        var colourData = setColourData.colour;
+        test.equals(colourData.red, 120);
+        test.equals(colourData.green, 10);
+        test.equals(colourData.blue, 30);
+        test.done();
+      });
+    }), 1000);
+
+
+  }
+};
