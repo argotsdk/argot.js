@@ -71,13 +71,6 @@ exports['buildReader_for_light_setcolor_(a_nested_structure)'] = {
       library.then(function(lib) {
         // tests here
 
-        {
-          // Remove this block when we have the reader being built already and assigned
-          // to the type definition .reader property
-          var colourTypeDef = libfns.getTypeDefinition(lib,'light.colour');
-          colourTypeDef.reader = colourTypeDef.typeReader;
-        }
-
         var lightSetColorStructure = [{"description":"colour",
                                          "expression":{"type":"light.colour"}}];
         var readerFn = libfns.buildReader(lib,{expression:lightSetColorStructure});
