@@ -11,6 +11,7 @@ Check it out and run `grunt` for the tests
 ## Documentation
 
 * [Dictionary Format](https://github.com/danmidwood/argot.js/blob/master/doc/dictionary_format.md)
+* [Argot Message Format](https://github.com/danmidwood/argot.js/blob/master/doc/argotmessage_format.md)
 
 ## Examples
 _(Coming soon)_
