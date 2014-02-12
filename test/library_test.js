@@ -5,7 +5,6 @@ logger.cli();
 var streamifier = require('streamifier');
 
 var argot = require('../lib/argot.js');
-var libfns = require('../lib/library.js');
 
 var lightDictionary = './test/light.dictionary';
 
@@ -21,7 +20,7 @@ exports['read_light_colour'] = {
         // tests here
         var input = [120, 10, 30];
         var fileStream_input = streamifier.createReadStream (new Buffer(input));
-        var read_data = libfns.read(lib,'light.colour',fileStream_input);
+        var read_data = argot.read(lib,'light.colour',fileStream_input);
         test.equals(read_data.red, 120);
         test.equals(read_data.green, 10);
         test.equals(read_data.blue, 30);
@@ -44,7 +43,7 @@ exports['read_light_setcolor_(a_nested_structure)'] = {
 
         var input = [120, 10, 30];
         var fileStream_input = streamifier.createReadStream (new Buffer(input));
-        var setColourData = libfns.read(lib,'light.set_colour',fileStream_input);
+        var setColourData = argot.read(lib,'light.set_colour',fileStream_input);
         var colourData = setColourData.colour;
         test.equals(colourData.red, 120);
         test.equals(colourData.green, 10);
