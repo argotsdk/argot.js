@@ -40,8 +40,8 @@ exports['buildReader_for_light_color'] = {
   },
   'no args': function(test) {
     test.expect(3);
-    setTimeout(argot.loadDictionary(lightDictionary, function(library) {
-      library.then(function(lib) {
+    argot.loadDictionary(lightDictionary)
+      .then(function(lib) {
         // tests here
         var lightStructure = [{"description":"red","expression":{"type":"uint8"}},
                                {"description":"green","expression":{"type":"uint8"}},
@@ -54,10 +54,8 @@ exports['buildReader_for_light_color'] = {
         test.equals(read_data.green, 10);
         test.equals(read_data.blue, 30);
         test.done();
-      });
-    }), 1000);
-
-
+      })
+      .fail(test.done);
   }
 };
 
@@ -68,8 +66,8 @@ exports['buildReader_for_light_setcolor_(a_nested_structure)'] = {
   },
   'no args': function(test) {
     test.expect(3);
-    setTimeout(argot.loadDictionary(lightDictionary, function(library) {
-      library.then(function(lib) {
+    argot.loadDictionary(lightDictionary)
+      .then(function(lib) {
         // tests here
 
         var lightSetColorStructure = [{"description":"colour",
@@ -83,9 +81,7 @@ exports['buildReader_for_light_setcolor_(a_nested_structure)'] = {
         test.equals(colourData.green, 10);
         test.equals(colourData.blue, 30);
         test.done();
-      });
-    }), 1000);
-
-
+      })
+      .fail(test.done);
   }
 };

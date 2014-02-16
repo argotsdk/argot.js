@@ -49,13 +49,12 @@ exports['common'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    setTimeout(argot.loadDictionary(commonDictionary, function(library) {
-      console.log('library is :', library.toString());
-      library.then(function(x) {
-        test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
+    argot.loadDictionary(commonDictionary)
+      .then(function(library) {
+        test.equal(library.coreSize, 980, 'Common core size should be 980 bytes.');
         test.done();
-      });
-    }), 1000);
+      })
+      .fail(test.done);
   }
 };
 
@@ -67,13 +66,13 @@ exports['light'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    setTimeout(argot.loadDictionary(lightDictionary, function(library) {
-      console.log('library is :', library.toString());
-      library.then(function(x) {
-        test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
+    argot.loadDictionary(lightDictionary)
+      .then(function(library) {
+        console.log('library is :', library.toString());
+        test.equal(library.coreSize, 980, 'Common core size should be 980 bytes.');
         test.done();
-      });
-    }), 1000);
+      })
+      .fail(test.done);
   }
 };
 
@@ -85,12 +84,12 @@ exports['meta'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    setTimeout(argot.loadDictionary(metaDictionary, function(library) {
-      console.log('library is :', library.toString());
-      library.then(function(x) {
-        test.equal(x.coreSize, 980, 'Common core size should be 980 bytes.');
+    argot.loadDictionary(metaDictionary)
+      .then(function(library) {
+        console.log('library is :', library.toString());
+        test.equal(library.coreSize, 980, 'Common core size should be 980 bytes.');
         test.done();
-      });
-    }), 1000);
+      })
+      .fail(test.done);
   }
 };

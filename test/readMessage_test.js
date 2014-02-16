@@ -27,21 +27,15 @@ exports['read_test_message'] = {
     var input = [65, 19, 1, 50, 32, 0, 4, 100, 97, 116, 97, 1, 0, 27, 15, 3, 14, 5, 115, 104, 111, 114, 116, 13, 40, 14, 4, 98, 121, 116, 101, 13, 1, 14, 4, 116, 101, 120, 116, 13, 8, 50, 0, 10, 50, 5, 104, 101, 108, 108, 111];
 
     var fileStream_input = streamifier.createReadStream (new Buffer(input));
-    setTimeout(argot.readMessage(fileStream_input,
-                                 function(read_data) {
-                                   // tests here
-                                   test.equals(read_data.short, 10);
-                                   test.equals(read_data.byte, 50);
-                                   test.equals(read_data.text, 'hello');
-                                   test.done();
-                                 },
-                                 function() {
-                                   // if we arrive here the test fails because the expected number of
-                                   // of assertions were not applied. TODO Find out how to fail with
-                                   // a useful error message instead
-                                   test.done();
-                                 }
-                                ),1000);
+    argot.readMessage(fileStream_input)
+      .then(function(read_data) {
+        // tests here
+        test.equals(read_data.short, 10);
+        test.equals(read_data.byte, 50);
+        test.equals(read_data.text, 'hello');
+        test.done();
+      })
+      .fail(test.fail);
   }
 };
 
@@ -55,11 +49,10 @@ exports['read_test_message_invalid_magic_number'] = {
     var input = [65, 18];
 
     var fileStream_input = streamifier.createReadStream (new Buffer(input));
-    setTimeout(argot.readMessage(fileStream_input,function() {
-      // tests here
-      test.fail();
-    },function() {
-      test.done();
-    }),1000);
+    argot.readMessage(fileStream_input)
+      .then(test.fail)
+      .fail(function(){
+        test.done();
+      });
   }
 };
