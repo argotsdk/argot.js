@@ -17,13 +17,14 @@ exports['buildReader_throws_error_on_no_expression'] = {
   'no args': function(test) {
     test.expect(2);
     // tests here
+    var library = libfns.makeLibrary(1.3);
     test.throws(function() {
-      libfns.buildReader({},{});
+      library.buildReader({});
     },
                 'Expected an error',
                 'Expected error when no structure');
     test.doesNotThrow(function() {
-      libfns.buildReader({},{expression:'exists'});
+      library.buildReader({expression:'exists'});
     },
                       'Expected an error',
                       'There should be no error with a structure');
@@ -45,7 +46,7 @@ exports['buildReader_for_light_color'] = {
         var lightStructure = [{"description":"red","expression":{"type":"uint8"}},
                                {"description":"green","expression":{"type":"uint8"}},
                                {"description":"blue","expression":{"type":"uint8"}}];
-        var readerFn = libfns.buildReader(lib,{expression:lightStructure});
+        var readerFn = lib.buildReader({expression:lightStructure});
         var input = [120, 10, 30];
         var fileStream_input = streamifier.createReadStream (new Buffer(input));
         var read_data = readerFn(fileStream_input);
@@ -73,7 +74,7 @@ exports['buildReader_for_light_setcolor_(a_nested_structure)'] = {
 
         var lightSetColorStructure = [{"description":"colour",
                                          "expression":{"type":"light.colour"}}];
-        var readerFn = libfns.buildReader(lib,{expression:lightSetColorStructure});
+        var readerFn = lib.buildReader({expression:lightSetColorStructure});
         var input = [120, 10, 30];
         var fileStream_input = streamifier.createReadStream (new Buffer(input));
         var setColourData = readerFn(fileStream_input);
