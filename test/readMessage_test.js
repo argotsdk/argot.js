@@ -11,8 +11,6 @@
  possibly a underscore prefix or named as aType.
 */
 
-var logger = require('winston');
-logger.cli();
 var streamifier = require('streamifier');
 
 var argot = require('../lib/argot.js');
