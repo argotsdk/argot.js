@@ -26,7 +26,8 @@
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt": "~0.4.2",
-    "tools.repl": ">=0.0.1"
+    "tools.repl": ">=0.0.1",
+    "grunt-release-it": "~0.1.1"
   },
   "dependencies": {
     "q": "0.9.7",
