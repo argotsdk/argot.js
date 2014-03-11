@@ -31,7 +31,8 @@
   },
   "dependencies": {
     "q": "0.9.7",
-    "streamifier": "0.1.0"
+    "streamifier": "0.1.0",
+    "mutacache": "0.0.2"
   },
   "keywords": [],
   "doc": "./doc"
