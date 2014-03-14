@@ -38,6 +38,32 @@ exports['read_test_message'] = {
   }
 };
 
+exports['read_Argot_Message_and_then_normal_message'] = {
+  setUp: function(done) {
+    // setup here
+    done();
+  },
+  'no args': function(test) {
+    test.expect(3);
+    var input = [65, 19, 1, 50, 32, 0, 4, 100, 97, 116, 97, 1, 0, 27, 15, 3, 14, 5, 115, 104, 111, 114, 116, 13, 40, 14, 4, 98, 121, 116, 101, 13, 1, 14, 4, 116, 101, 120, 116, 13, 8, 50, 0, 10, 50, 5, 104, 101, 108, 108, 111];
+
+    var fileStream_input = streamifier.createReadStream (new Buffer(input));
+    argot.readMessage(fileStream_input)
+      .then(function(libraryAndReadData) {
+        // tests here
+        var library = libraryAndReadData[0];
+        var inputWithoutDefinitions = [50, 0, 10, 50, 5, 104, 101, 108, 108, 111];
+        var inputWithoutDefinitions_fs = streamifier.createReadStream (new Buffer(inputWithoutDefinitions));
+        var read_data = argot.read(library,inputWithoutDefinitions_fs);
+        test.equals(read_data.short, 10);
+        test.equals(read_data.byte, 50);
+        test.equals(read_data.text, 'hello');
+        test.done();
+      })
+      .fail(test.fail);
+  }
+};
+
 
 exports['read_test_message_invalid_magic_number'] = {
   setUp: function(done) {
