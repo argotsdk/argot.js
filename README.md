@@ -11,7 +11,9 @@ A JavaScript port of [Argot SDK](http://www.argot-sdk.org/).
 
 ## Getting Started
 
-Add Argot to your project
+Like all good node packages, you can find [Argot in NPM](https://www.npmjs.org/package/argot).
+
+Add Argot to your project with
 
 `npm install argot --save`
 
