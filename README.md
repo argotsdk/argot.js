@@ -124,11 +124,6 @@ argot.loadDictionary('~/a/file/on/disk.dictionary')
   });
 ```
 
-
-
-
-
-
 ## Development
 
 Check it out the project and run `grunt` to perform a style check (jshint) and run through the tests.
@@ -140,9 +135,6 @@ The main points of interest are:
 * `library.js` is the Argot library data type
 
 There are a few other files, mostly supplementary.
-
-## Release History
-
 
 ## License
 Copyright (c) 2014 Dan Midwood
