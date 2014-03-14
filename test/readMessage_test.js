@@ -26,8 +26,9 @@ exports['read_test_message'] = {
 
     var fileStream_input = streamifier.createReadStream (new Buffer(input));
     argot.readMessage(fileStream_input)
-      .then(function(read_data) {
+      .then(function(libraryAndReadData) {
         // tests here
+        var read_data = libraryAndReadData[1];
         test.equals(read_data.short, 10);
         test.equals(read_data.byte, 50);
         test.equals(read_data.text, 'hello');
@@ -36,6 +37,7 @@ exports['read_test_message'] = {
       .fail(test.fail);
   }
 };
+
 
 exports['read_test_message_invalid_magic_number'] = {
   setUp: function(done) {
