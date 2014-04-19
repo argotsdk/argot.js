@@ -2,17 +2,17 @@
   "name": "argot",
   "description": "A language for the Internet of Things.",
   "version": "0.1.10",
-  "homepage": "https://github.com/danmidwood/argot.js",
+  "homepage": "https://github.com/argotsdk/argot.js",
   "author": {
     "name": "Dan Midwood",
     "email": "dan@danmidwood.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/danmidwood/argot.js.git"
+    "url": "git://github.com/argotsdk/argot.js.git"
   },
   "bugs": {
-    "url": "https://github.com/danmidwood/argot.js/issues"
+    "url": "https://github.com/argosdk/argot.js/issues"
   },
   "main": "lib/argot",
   "engines": {
@@ -35,5 +35,6 @@
     "mutacache": "0.0.2"
   },
   "keywords": [],
-  "doc": "./doc"
+  "doc": "./doc",
+  "license": "BSD-3"
 }

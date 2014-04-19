@@ -1,4 +1,4 @@
-# argot [![Build Status](https://secure.travis-ci.org/danmidwood/argot.js.png?branch=master)](http://travis-ci.org/danmidwood/argot.js)
+# argot [![Build Status](https://secure.travis-ci.org/argotsdk/argot.js.png?branch=master)](http://travis-ci.org/argotsdk/argot.js)
 
 A language for the Internet of Things.
 
@@ -6,8 +6,8 @@ A JavaScript port of [Argot SDK](http://www.argot-sdk.org/).
 
 ## Documentation
 
-* [Dictionary Format](https://github.com/danmidwood/argot.js/blob/master/doc/dictionary_format.md)
-* [Argot Message Format](https://github.com/danmidwood/argot.js/blob/master/doc/argotmessage_format.md)
+* [Dictionary Format](https://github.com/argotsdk/argot.js/blob/master/doc/dictionary_format.md)
+* [Argot Message Format](https://github.com/argotsdk/argot.js/blob/master/doc/argotmessage_format.md)
 
 ## Getting Started
 
@@ -71,7 +71,7 @@ argot.readMessage(stream)
   });
 ```
 
-Read more about for format at [Argot Message Format](https://github.com/danmidwood/argot.js/blob/master/doc/argotmessage_format.md)
+Read more about for format at [Argot Message Format](https://github.com/argotsdk/argot.js/blob/master/doc/argotmessage_format.md)
 
 ### Argot.read
 
@@ -137,4 +137,7 @@ The main points of interest are:
 There are a few other files, mostly supplementary.
 
 ## License
-Copyright (c) 2014 Dan Midwood
+
+BSD-3 License, see [LICENSE.TXT](https://github.com/argotsdk/argot.js/blob/master/LICENSE.TXT)
+
+Copyright (c) 2014 Live Media Pty Ltd
